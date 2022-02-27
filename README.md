@@ -1,5 +1,7 @@
 # api
 API tutorial
+### Здесь main - главная ветка
+### master - рабочая ветка
 # GIT 
 https://github.com/AbayReushenov
 1. Создать в GitHub репозиторий: api
@@ -20,3 +22,13 @@ https://github.com/AbayReushenov
 4. git add -A
 5. git commit -m"KIKI"
 6. git push origin main
+
+
+# Стандартный merge из master в main
+1. Работаем в master
+2. git add -A
+3. git commit -m "New feature"
+4. git push
+5. git checkout main
+6. git pull
+7. git merge master
