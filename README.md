@@ -30,5 +30,6 @@ https://github.com/AbayReushenov
 3. git commit -m "New feature"
 4. git push
 5. git checkout main
+   Работаем в main
 6. git pull
 7. git merge master
