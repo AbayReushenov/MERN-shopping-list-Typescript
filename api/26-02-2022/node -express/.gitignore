@@ -132,3 +132,6 @@ dist
 # js files
 dist/
 *.js
+
+# ENV
+config/config.env

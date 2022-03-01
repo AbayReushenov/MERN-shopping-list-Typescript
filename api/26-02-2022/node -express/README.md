@@ -14,10 +14,15 @@
 ### Запуск компилятора
 # tsc --w
 ### Запуск сервера nodemon
-# npm start
+# npm start // продакшен
+# npm run dev // development mode
+
 ### Отправляем с POSTMAN
-http://localhost:3000/
+http://localhost:5000/
 
 
 # Не забыть gitignore
 # npx create-gitignore Node
+# ------------------------------
+
+npm i express dotenv
