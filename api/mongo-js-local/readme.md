@@ -21,7 +21,7 @@
 6. npm start
 8. npm i dotenv
 9.  sudo systemctl restart mongod
-или посмотри в заметках Googlr Keep (mongo)
+или посмотри в заметках Google Keep (mongo)
 10. STOP
 - sudo systemctl stop mongod
 11. 
