@@ -1,7 +1,4 @@
-#### Установка express + mongo на javascript
-# https://www.digitalocean.com/community/tutorials/workflow-nodemon-ru
-# sudo lsof -i :3000
-# kill -9 <PID>
+#### Установка express + mongo на javascript с установкой mongoDB на LINUX-ubuntu
 1. npm init
 2. npx create-gitignore Node
 3. npm install express --save
@@ -9,24 +6,23 @@
 4. npm i --save-dev @types/express
 5. npm install --save-dev nodemon 
 6. npm install mongoose --save
-# or using yarn: yarn add nodemon -D
-# package.json :
-#   "scripts": {
+7. package.json :
+"scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   }
-5. npm run dev 
-или 
-6. npm start
-8. npm i dotenv
-9.  sudo systemctl restart mongod
+9. sudo systemctl restart mongod
 или посмотри в заметках Google Keep (mongo)
-10. STOP
+STOP:
 - sudo systemctl stop mongod
-11. 
+10. npm run dev 
+или  npm start
 
-## https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+# https://www.digitalocean.com/community/tutorials/workflow-nodemon-ru
+# sudo lsof -i :3000
+# kill -9 <PID>
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 Start MongoDB.
 You can start the mongod process by issuing the following command:
