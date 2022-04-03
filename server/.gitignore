@@ -129,4 +129,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# zip
+*.zip
+node_modules
 *.js
+
+
+# config
+config/*.json
