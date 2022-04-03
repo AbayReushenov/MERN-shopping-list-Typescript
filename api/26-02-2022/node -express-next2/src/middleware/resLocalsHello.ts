@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 // @route 
 // @access 
 
-export const hello = (
+export const resLocalsHello = (
   req: Request,
   res: Response,
   next: NextFunction
