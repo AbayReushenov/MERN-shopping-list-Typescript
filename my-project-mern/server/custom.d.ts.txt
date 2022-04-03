@@ -1,0 +1,12 @@
+// import jwt from 'jsonwebtoken';
+
+// /* 
+// export interface IRequest extends Request {
+//   user: string | jwt.JwtPayload;
+// } */
+
+// declare namespace Express {
+//   export interface Request {
+//     user?: string | Record<string,string|number>
+//   }
+// }
