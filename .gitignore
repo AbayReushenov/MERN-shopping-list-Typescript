@@ -129,6 +129,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# js files
-dist/
+# zip
+*.zip
+node_modules
 *.js
