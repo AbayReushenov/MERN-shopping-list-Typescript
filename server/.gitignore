@@ -133,3 +133,7 @@ dist
 *.zip
 node_modules
 *.js
+
+
+# config
+config/*.json
