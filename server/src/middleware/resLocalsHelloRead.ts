@@ -4,11 +4,11 @@ import { Request, Response, NextFunction } from 'express';
 // @route 
 // @access 
 
-export const hello = (
+export const resLocalsHelloRead = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  res.locals.hello = 'Привет! Я мидлвар' ;
+  console.log(res.locals.hello);
   next()
 };

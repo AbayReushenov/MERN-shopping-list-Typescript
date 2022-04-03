@@ -11,9 +11,10 @@ export const authentication = (
   if (!token) {
     return res.status(401).json({ msg: 'Токена нет, авторизация отклонена' });
   }
-  const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
+  const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`) as Record<string,string | number>;
   try {
-    // req.user= decoded;
+    res.locals.user= decoded;    
+    req.user = decoded;
     next();
   } catch {
     (error: any) => {
