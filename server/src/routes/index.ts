@@ -5,6 +5,6 @@ import { routerAuth } from './auth';
 
 export const apiRouter = Router()
 
-apiRouter.use("/todos", routerTodos)
+apiRouter.use("/data", routerTodos)
 apiRouter.use("/users", routerUsers)
 apiRouter.use("/auth", routerAuth)
