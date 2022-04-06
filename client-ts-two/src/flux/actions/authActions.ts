@@ -10,31 +10,32 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from './types';
-// Проверим token  и загрузим данные user
+import { IAuthFunction, IConfigHeaders } from '../../types/interfaces';
 
-export const loadUser = () => (dispatch, getState) => {
-  // user загружается
+// Check token & load user
+export const loadUser = () => (dispatch: Function, getState: Function) => {
+  // User loading
   dispatch({ type: USER_LOADING });
 
   axios
     .get('/api/auth', tokenConfig(getState))
-    .then((res) =>
+    .then(res =>
       dispatch({
         type: USER_LOADED,
-        payload: res.data,
+        payload: res.data
       })
     )
-    .catch((err) => {
+    .catch(err => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
-        type: AUTH_ERROR,
+        type: AUTH_ERROR
       });
     });
 };
 
 // Register User
-export const register = ({ name, email, password }) => (
-  dispatch
+export const register = ({ name, email, password }: IAuthFunction) => (
+  dispatch: Function
 ) => {
   // Headers
   const config = {
@@ -65,8 +66,8 @@ export const register = ({ name, email, password }) => (
 };
 
 // Login User
-export const login = ({ email, password }) => (
-  dispatch
+export const login = ({ email, password }: IAuthFunction) => (
+  dispatch: Function
 ) => {
   // Headers
   const config = {
@@ -103,21 +104,22 @@ export const logout = () => {
   };
 };
 
-// setup config/headers and token
-export const tokenConfig = (getState) => {
+// Setup config/headers and token
+export const tokenConfig = (getState: Function) => {
+  // Get token from localstorage
   const token = getState().auth.token;
+
   // Headers
-  const config = {
+  const config: IConfigHeaders = {
     headers: {
-      'Content-type': 'application/json',
-    },
+      'Content-type': 'application/json'
+    }
   };
 
-  // Если  token существует добавить его в Headers
+  // If token, add to headers
   if (token) {
     config.headers['x-auth-token'] = token;
   }
 
   return config;
 };
-
