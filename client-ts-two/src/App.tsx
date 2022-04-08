@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AppNavbar from './components/AppNavbar';
+import { AppNavbar } from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
 import { Container } from 'reactstrap';
@@ -15,12 +15,12 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(fillUserAuthintificatedAsync());
+    dispatch(fillUserAuthintificatedAsync());
   }, [dispatch]);
-  
+
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className='App'>
         <AppNavbar />
         <Container>
           <ItemModal />

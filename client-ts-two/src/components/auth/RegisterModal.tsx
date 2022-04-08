@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback, useEffect } from 'react';
 import {
   Button,
@@ -11,7 +12,7 @@ import {
   NavLink,
   Alert
 } from 'reactstrap';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { register } from '../../flux/actions/authActions';
 import { clearErrors } from '../../flux/actions/errorActions';
 import {
@@ -19,13 +20,18 @@ import {
   ITarget,
   IAuthReduxProps
 } from '../../types/interfaces';
+import { selectIsAuthenticated } from '../../store/auth/selectors';
+import { selectError } from '../../store/error/selectors';
 
-const RegisterModal = ({
+export const RegisterModal = (/* {
   isAuthenticated,
   error,
   register,
   clearErrors
-}: IRegisterModal) => {
+}: IRegisterModal */) => {
+
+
+
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,7 +48,10 @@ const RegisterModal = ({
   const handleChangeEmail = (e: ITarget) => setEmail(e.target.value);
   const handleChangePassword = (e: ITarget) => setPassword(e.target.value);
 
-  const handleOnSubmit = (e: any) => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const error = useSelector(selectError);
+
+  const handleOnSubmit = (e: any /* React.ChangeEvent<HTMLInputElement>  */) => {
     e.preventDefault();
 
     // Create user object
@@ -124,11 +133,11 @@ const RegisterModal = ({
   );
 };
 
-const mapStateToProps = (state: IAuthReduxProps) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
-});
+// const mapStateToProps = (state: IAuthReduxProps) => ({
+//   isAuthenticated: state.auth.isAuthenticated,
+//   error: state.error
+// });
 
-export default connect(mapStateToProps, { register, clearErrors })(
-  RegisterModal
-);
+// export default connect(mapStateToProps, { register, clearErrors })(
+//   RegisterModal
+// );

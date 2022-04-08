@@ -7,7 +7,7 @@ interface Props {
   auth: AuthState;
 }
 
-export const AuthLinks: React.FC<Props> = (props) => {
+export const AccessСonfirmedUser: React.FC<Props> = (props) => {
   const { auth } = props;
   return (
     <Fragment>

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { NavItem } from 'reactstrap';
-import RegisterModal from './auth/RegisterModal';
+import {RegisterModal} from './auth/RegisterModal';
 import LoginModal from './auth/LoginModal';
 
-export const GuestLinks: React.ReactFragment = (
+export const Guest: React.ReactFragment = (
   <Fragment>
     <NavItem>
       <RegisterModal />

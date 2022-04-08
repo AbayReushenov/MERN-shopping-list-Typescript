@@ -1,4 +1,5 @@
-import { GET_ERRORS, CLEAR_ERRORS } from '../actions/types';
+/* eslint-disable import/no-anonymous-default-export */
+/* import { GET_ERRORS, CLEAR_ERRORS } from '../actions/types';
 import { IAction } from '../../types/interfaces';
 
 const initialState = {
@@ -25,3 +26,4 @@ export default function(state = initialState, action: IAction) {
       return state;
   }
 }
+ */
