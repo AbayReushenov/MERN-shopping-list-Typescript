@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   Button,
   Modal,
@@ -12,18 +12,18 @@ import {
   Alert,
 } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { actions as actionsError } from '../../store/error/error';
 import { ITarget } from '../../types/interfaces';
 import { selectIsAuthenticated } from '../../store/auth/selectors';
 import { selectError } from '../../store/error/selectors';
-import { loginUserAsync } from '../../store/auth/loginUser';
+import { actions as actionsError } from '../../store/error/error';
+import { signupUserAsync } from '../../store/auth/signupUser';
 
-export const LoginModal: React.FC = () => {
+export const SignupModal: React.FC  = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const error = useSelector(selectError);
 
   const [modal, setModal] = useState(false);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState(null);
@@ -35,17 +35,22 @@ export const LoginModal: React.FC = () => {
     setModal(!modal);
   }, [dispatch, modal]);
 
+  const handleChangeName = (e: ITarget) => setName(e.target.value);
   const handleChangeEmail = (e: ITarget) => setEmail(e.target.value);
   const handleChangePassword = (e: ITarget) => setPassword(e.target.value);
 
-  const handleOnSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = { email, password };
-    dispatch(loginUserAsync(user));
+    const user = {
+      name,
+      email,
+      password,
+    };
+    dispatch(signupUserAsync(user));
   };
 
   useEffect(() => {
-    if (error.id === 'LOGIN_FAIL') {
+    if (error.id === 'REGISTER_FAIL') {
       setMsg(error.msg.msg);
     } else {
       setMsg(null);
@@ -60,15 +65,25 @@ export const LoginModal: React.FC = () => {
   return (
     <div>
       <NavLink onClick={handleToggle} href='#'>
-        Login
+        Register
       </NavLink>
 
       <Modal isOpen={modal} toggle={handleToggle}>
-        <ModalHeader toggle={handleToggle}>Login</ModalHeader>
+        <ModalHeader toggle={handleToggle}>Register</ModalHeader>
         <ModalBody>
           {msg ? <Alert color='danger'>{msg}</Alert> : null}
-          <Form>
+          <Form onSubmit={handleOnSubmit}>
             <FormGroup>
+              <Label for='name'>Name</Label>
+              <Input
+                type='text'
+                name='name'
+                id='name'
+                placeholder='Name'
+                className='mb-3'
+                onChange={handleChangeName}
+              />
+
               <Label for='email'>Email</Label>
               <Input
                 type='email'
@@ -88,13 +103,8 @@ export const LoginModal: React.FC = () => {
                 className='mb-3'
                 onChange={handleChangePassword}
               />
-              <Button
-                color='dark'
-                style={{ marginTop: '2rem' }}
-                block
-                onClick={handleOnSubmit}
-              >
-                Login
+              <Button color='dark' style={{ marginTop: '2rem' }} block>
+                Register
               </Button>
             </FormGroup>
           </Form>

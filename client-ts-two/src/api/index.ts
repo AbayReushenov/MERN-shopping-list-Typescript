@@ -1,4 +1,6 @@
-import { user } from "./user"
+import { auth } from "./auth"
+import { users } from "./users"
 export const api = {
-  user
+  auth,
+  users
 }

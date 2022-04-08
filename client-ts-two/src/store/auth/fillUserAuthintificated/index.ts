@@ -15,7 +15,7 @@ export const fillUserAuthintificatedAsync = createAction(
 function* fillUserAuthintificatedWorker(): SagaIterator<void> {
   try {
     const token = yield select(selectToken);
-    const user = yield apply(api, api.user.auth, [tokenConfig(token)]);
+    const user = yield apply(api, api.auth.get, [tokenConfig(token)]);
     yield put(actionsAuth.fillUserAuthintificated(user));
   } catch (error: any) {
     yield put(

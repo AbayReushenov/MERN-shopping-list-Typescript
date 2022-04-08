@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserAuthintificated } from '../../api/user';
+import { UserAuthintificated } from '../../api/auth';
+import { DataRegistered } from '../../api/users';
 
 export interface AuthState {
   token: string | null;
@@ -31,11 +32,22 @@ const auth = createSlice({
       action: PayloadAction<UserAuthintificated>
     ) => {
       if (action.payload) {
+        state.isAuthenticated = true;
+        state.isLoading = false;
         state.user = action.payload;
       }
     },
     reset: (state) => {
       state = resetState;
+    },
+    fillRegisteredUser: (state, action: PayloadAction<DataRegistered>) => {
+      if (action.payload) {
+        localStorage.setItem('token', action.payload.token);
+        state.token = localStorage.getItem('token')
+        state.isAuthenticated = true;
+        state.isLoading = false;
+        state.user = action.payload.user;
+      }
     },
   },
 });

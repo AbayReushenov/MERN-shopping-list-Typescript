@@ -16,10 +16,15 @@ export interface UserAuthintificated {
   email: string;
   date?: Date;
 }
-export const user = {
-  auth: async (tokenConfig: ConfigHeaders): Promise<UserAuthintificated> => {
+
+
+export const auth = {
+  get: async (tokenConfig: ConfigHeaders): Promise<UserAuthintificated> => {
     const { data } =
-      await axiosCreateBaseURLApi.get<UserAuthintificatedFromServer>('/auth', tokenConfig);
+      await axiosCreateBaseURLApi.get<UserAuthintificatedFromServer>(
+        '/auth',
+        tokenConfig
+      );
     return { ...data, id: data._id, date: fromUnixTime(data.date) };
-  },
+  }
 };

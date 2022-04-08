@@ -11,7 +11,7 @@ export interface ErrorState {
 }
 
 const initialState: ErrorState = {
-  msg: {msg: null},
+  msg: { msg: null },
   status: null,
   id: null,
 };
@@ -27,28 +27,9 @@ const error = createSlice({
         id: action.payload.id,
       };
     },
-
-    /*     fetchDataStart: (state) => {
-      state.isLoading = true;
+    clearErrors: (state) => {
+      state = initialState;
     },
-    fetchDataFinish: (state) => {
-      state.isLoading = false;
-    },
-    setMessage: (state, action: PayloadAction<string>) => {
-      state.connectionError = {
-        title: '',
-        text: action.payload,
-      };
-    },
-    setError: (state, action: PayloadAction<Error>) => {
-      state.connectionError = {
-        title: 'Ошибка',
-        text: action.payload.message || 'Ошибка сервера',
-      };
-    },
-    resetConnectionError: (state) => {
-      state.connectionError = null;
-    }, */
   },
 });
 
