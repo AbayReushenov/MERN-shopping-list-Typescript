@@ -9,8 +9,8 @@ import {
 } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../store/auth/selectors';
-import { AccessСonfirmedUser } from './AccessСonfirmedUser';
-import { Guest } from './Guest';
+import { СonfirmedUser } from './СonfirmedUser';
+import { Guest } from './auth/Guest';
 
 export const AppNavbar: React.FC = () => {
   const auth = useSelector(selectAuth);
@@ -25,7 +25,7 @@ export const AppNavbar: React.FC = () => {
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='ml-auto' navbar>
-              {auth && auth.isAuthenticated ? AccessСonfirmedUser({auth}) : Guest}
+              {auth && auth.isAuthenticated ? СonfirmedUser({auth}) : Guest}
             </Nav>
           </Collapse>
         </Container>

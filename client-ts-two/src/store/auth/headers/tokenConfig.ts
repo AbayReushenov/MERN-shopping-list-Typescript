@@ -1,8 +1,4 @@
-export interface ConfigHeaders {
-  headers: {
-    [index: string]: string;
-  };
-}
+import { ConfigHeaders } from './ConfigHeaders';
 
 export const tokenConfig = (token: string | null): ConfigHeaders => {
   const config: ConfigHeaders = {

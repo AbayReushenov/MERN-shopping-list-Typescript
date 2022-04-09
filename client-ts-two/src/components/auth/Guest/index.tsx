@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { NavItem } from 'reactstrap';
-import { SignupModal } from './auth/SignupModal';
-import LoginModal from './auth/LoginModal';
+import { Signup } from './Signup';
+import { Login } from './Login';
 
 export const Guest: React.ReactFragment = (
   <Fragment>
     <NavItem>
-      <SignupModal />
+      <Signup />
     </NavItem>
     <NavItem>
-      <LoginModal />
+      <Login />
     </NavItem>
   </Fragment>
 );

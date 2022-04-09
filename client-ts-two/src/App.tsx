@@ -5,7 +5,7 @@ import ItemModal from './components/ItemModal';
 import { Container } from 'reactstrap';
 
 import { Provider, useDispatch } from 'react-redux';
-import { fillUserAuthintificatedAsync } from './store/auth/fillUserAuthintificated';
+import { fillAuthUserAsync } from './store/auth/fillAuthUser';
 import { store } from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +15,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fillUserAuthintificatedAsync());
+    dispatch(fillAuthUserAsync());
   }, [dispatch]);
 
   return (

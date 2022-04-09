@@ -6,17 +6,17 @@ import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
 import { actions as actionsAuth } from '../auth';
 import { selectToken } from '../selectors';
-import { tokenConfig } from './tokenConfig';
+import { tokenConfig } from '../headers/tokenConfig';
 
-export const fillUserAuthintificatedAsync = createAction(
-  'users/fillUserAuthintificatedAsync'
+export const fillAuthUserAsync = createAction(
+  'users/fillAuthUserAsync'
 );
 
-function* fillUserAuthintificatedWorker(): SagaIterator<void> {
+function* fillAuthUserWorker(): SagaIterator<void> {
   try {
     const token = yield select(selectToken);
     const user = yield apply(api, api.auth.get, [tokenConfig(token)]);
-    yield put(actionsAuth.fillUserAuthintificated(user));
+    yield put(actionsAuth.fillAuthUser(user));
   } catch (error: any) {
     yield put(
       actionsError.returnErrors({
@@ -29,9 +29,9 @@ function* fillUserAuthintificatedWorker(): SagaIterator<void> {
   }
 }
 
-export function* watchFillUserAuthintificated(): SagaIterator<void> {
+export function* watchFillAuthUser(): SagaIterator<void> {
   yield takeLatest(
-    fillUserAuthintificatedAsync.type,
-    fillUserAuthintificatedWorker
+    fillAuthUserAsync.type,
+    fillAuthUserWorker
   );
 }

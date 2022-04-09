@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserAuthintificated } from '../../api/auth';
-import { DataRegistered } from '../../api/users';
+import { User, DataFromServer } from '../../api/auth';
 
 export interface AuthState {
   token: string | null;
   isAuthenticated: boolean | null;
   isLoading: boolean;
-  user: UserAuthintificated | null;
+  user: User | null;
 }
 
 const initialState: AuthState = {
@@ -27,9 +26,9 @@ const auth = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    fillUserAuthintificated: (
+    fillAuthUser: (
       state,
-      action: PayloadAction<UserAuthintificated>
+      action: PayloadAction<User>
     ) => {
       if (action.payload) {
         state.isAuthenticated = true;
@@ -38,12 +37,13 @@ const auth = createSlice({
       }
     },
     reset: (state) => {
+      localStorage.removeItem('token');
       state = resetState;
     },
-    fillRegisteredUser: (state, action: PayloadAction<DataRegistered>) => {
+    fillUser: (state, action: PayloadAction<DataFromServer>) => {
       if (action.payload) {
         localStorage.setItem('token', action.payload.token);
-        state.token = localStorage.getItem('token')
+        state.token = action.payload.token;
         state.isAuthenticated = true;
         state.isLoading = false;
         state.user = action.payload.user;

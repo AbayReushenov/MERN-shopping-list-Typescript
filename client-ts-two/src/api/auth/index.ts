@@ -1,30 +1,40 @@
-import { fromUnixTime } from 'date-fns';
-
 import { axiosCreateBaseURLApi } from '../axiosCreateBaseURLApi';
-import { ConfigHeaders } from '../../store/auth/fillUserAuthintificated/tokenConfig';
+import { ConfigHeaders } from "../../store/auth/headers/ConfigHeaders";
 
-export interface UserAuthintificatedFromServer {
-  _id: string;
-  name: string;
-  email: string;
-  date: number;
-}
-
-export interface UserAuthintificated {
+export interface User {
   id: string;
   name: string;
   email: string;
-  date?: Date;
 }
 
+export interface UserSignin {
+  email: string;
+  password: string;
+}
+
+export interface DataFromServer {
+  user: User
+  token: string
+}
 
 export const auth = {
-  get: async (tokenConfig: ConfigHeaders): Promise<UserAuthintificated> => {
+  get: async (tokenConfig: ConfigHeaders): Promise<User> => {
     const { data } =
-      await axiosCreateBaseURLApi.get<UserAuthintificatedFromServer>(
+      await axiosCreateBaseURLApi.get<User>(
         '/auth',
         tokenConfig
       );
-    return { ...data, id: data._id, date: fromUnixTime(data.date) };
-  }
+    return data;
+  },
+  signin: async (
+    user: UserSignin,
+    configHeaders: ConfigHeaders
+  ): Promise<DataFromServer> => {
+    const { data } = await axiosCreateBaseURLApi.post<DataFromServer>(
+      '/auth',
+      JSON.stringify(user),
+      configHeaders
+    );
+    return data;
+  },
 };

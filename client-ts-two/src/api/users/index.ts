@@ -1,34 +1,18 @@
 import { axiosCreateBaseURLApi } from '../axiosCreateBaseURLApi';
-import { ConfigHeaders } from '../../store/auth/fillUserAuthintificated/tokenConfig';
-import { UserAuthintificated } from '../../api/auth';
+import { ConfigHeaders } from "../../store/auth/headers/ConfigHeaders";
+import { DataFromServer } from '../../api/auth';
 
-export interface NewUser {
+export interface UserSignup {
   name: string;
   email: string;
   password: string;
 }
 
-export interface RegisteredFromServerUser {
-  id: string;
-  name: string;
-  email: string;
-}
-
-export interface DataFromServer {
-  user: RegisteredFromServerUser
-  token: string
-}
-
-export interface DataRegistered  {
-  user: UserAuthintificated
-  token: string
-}
-
 export const users = {
   signup: async (
-    newUser: NewUser,
+    newUser: UserSignup,
     configHeaders: ConfigHeaders
-  ): Promise<DataRegistered> => {
+  ): Promise<DataFromServer> => {
     const { data } = await axiosCreateBaseURLApi.post<DataFromServer>(
       '/users',
       JSON.stringify(newUser),
