@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { NavItem } from 'reactstrap';
-import { Signup } from './Signup';
-import { Login } from './Login';
+
+import { Signup } from './Signup/Signup';
+import { Login } from './Login/Login';
 
 export const Guest: React.ReactFragment = (
   <Fragment>

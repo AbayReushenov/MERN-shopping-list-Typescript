@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { actions as actionsError } from '../../../store/error/error';
-import { selectIsAuthenticated } from '../../../store/auth/selectors';
-import { selectError } from '../../../store/error/selectors';
-import { Msg } from '../../../store/auth/enumMsg';
+import { actions as actionsError } from '../../../../store/error/error';
+import { selectIsAuthenticated } from '../../../../store/auth/selectors';
+import { selectError } from '../../../../store/error/selectors';
+import { Auth } from '../../../../store/auth/message';
 
-export const useMsgModal = (errorMsg: Msg) => {
+export const useMsgModal = (errorMsg: Auth) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const error = useSelector(selectError);

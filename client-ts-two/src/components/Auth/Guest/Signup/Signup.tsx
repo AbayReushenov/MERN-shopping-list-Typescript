@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import { ITarget } from '../../../../types/interfaces';
 import { signupUserAsync } from '../../../../store/auth/signupUser';
 import { FormSignup } from './FormSignup';
-import { Msg } from '../../../../store/auth/enumMsg';
-import { useMsgModal } from '../useMsgModal';
+import { Auth } from '../../../../store/auth/message';
+import { useMsgModal } from '../hooks/useMsgModal';
 
 
 export const Signup: React.FC = () => {
-  const { msg, modal, handleToggle } = useMsgModal(Msg.REGISTER_FAIL);
+  const { msg, modal, handleToggle } = useMsgModal(Auth.REGISTER_FAIL);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

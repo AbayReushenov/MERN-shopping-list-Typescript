@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../flux/actions/itemActions';
-import { IItemReduxProps, IItemModal, ITarget } from '../types/interfaces';
+import { IItemReduxProps, IItemModal, ITarget } from '../../types/interfaces';
 
 const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
   const [modal, setModal] = useState(false);

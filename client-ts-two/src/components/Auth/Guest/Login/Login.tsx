@@ -5,13 +5,13 @@ import { Modal, ModalHeader, ModalBody, NavLink, Alert } from 'reactstrap';
 import { ITarget } from '../../../../types/interfaces';
 import { loginUserAsync } from '../../../../store/auth/loginUser';
 import { FormLogin } from './FormLogin';
-import { useMsgModal } from '../useMsgModal';
-import { Msg } from '../../../../store/auth/enumMsg';
+import { useMsgModal } from '../hooks/useMsgModal';
+import { Auth } from '../../../../store/auth/message';
 
 export const Login: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { msg, modal, handleToggle } = useMsgModal(Msg.LOGIN_FAIL);
+  const { msg, modal, handleToggle } = useMsgModal(Auth.LOGIN_FAIL);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

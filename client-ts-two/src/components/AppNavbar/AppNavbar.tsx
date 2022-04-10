@@ -8,9 +8,9 @@ import {
   Container,
 } from 'reactstrap';
 import { useSelector } from 'react-redux';
-import { selectAuth } from '../store/auth/selectors';
-import { СonfirmedUser } from './СonfirmedUser';
-import { Guest } from './auth/Guest';
+import { selectAuth } from '../../store/auth/selectors';
+import { СonfirmedUser } from '../Auth/СonfirmedUser/СonfirmedUser';
+import { Guest } from '../Auth/Guest/Guest';
 
 export const AppNavbar: React.FC = () => {
   const auth = useSelector(selectAuth);

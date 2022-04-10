@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { AppNavbar } from './components/AppNavbar';
+import { AppNavbar } from './components/AppNavbar/AppNavbar';
 import ShoppingList from './components/ShoppingList';
-import ItemModal from './components/ItemModal';
+import ItemModal from './components/ShoppingList/ItemModal';
 import { Container } from 'reactstrap';
 
 import { Provider, useDispatch } from 'react-redux';
