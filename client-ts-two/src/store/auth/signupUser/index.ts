@@ -6,7 +6,7 @@ import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
 import { actions as actionsAuth } from '../auth';
 import { Auth } from '../message';
-import { baseConfig } from '../headers/baseConfig';
+import { baseConfig } from '../../headers/baseConfig';
 
 interface Payload {
   name: string;

@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { addItem } from '../flux/actions/itemActions';
 import { IItemReduxProps, IItemModal, ITarget } from '../../types/interfaces';
 
-const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
+export const ItemModal = (/* { isAuthenticated, addItem }: IItemModal */) => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
 
@@ -71,10 +71,11 @@ const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
     </div>
   );
 };
-
+/* 
 const mapStateToProps = (state: IItemReduxProps) => ({
   item: state.item,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { addItem })(ItemModal);
+ */

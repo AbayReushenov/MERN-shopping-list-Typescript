@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../flux/actions/itemActions';
 import { IItemReduxProps, IShoppingList } from '../types/interfaces';
 
-const ShoppingList = ({
+export const ShoppingList = ({
   getItems,
   item,
   isAuthenticated,
@@ -47,9 +47,11 @@ const ShoppingList = ({
   );
 };
 
+/* 
 const mapStateToProps = (state: IItemReduxProps) => ({
   item: state.item,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);
+ */

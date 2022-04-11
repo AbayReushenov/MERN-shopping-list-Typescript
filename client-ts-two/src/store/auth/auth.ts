@@ -27,24 +27,20 @@ const auth = createSlice({
   initialState,
   reducers: {
     fillAuthUser: (state, action: PayloadAction<User>) => {
-      if (action.payload) {
-        state.isAuthenticated = true;
-        state.isLoading = false;
-        state.user = action.payload;
-      }
+      state.isAuthenticated = true;
+      state.isLoading = false;
+      state.user = action.payload;
     },
     reset: (state) => {
       localStorage.removeItem('token');
       state = resetState;
     },
     fillUser: (state, action: PayloadAction<DataFromServer>) => {
-      if (action.payload) {
-        localStorage.setItem('token', action.payload.token);
-        state.token = action.payload.token;
-        state.isAuthenticated = true;
-        state.isLoading = false;
-        state.user = action.payload.user;
-      }
+      localStorage.setItem('token', action.payload.token);
+      state.token = action.payload.token;
+      state.isAuthenticated = true;
+      state.isLoading = false;
+      state.user = action.payload.user;
     },
   },
 });

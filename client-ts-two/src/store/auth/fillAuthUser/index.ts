@@ -6,7 +6,7 @@ import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
 import { actions as actionsAuth } from '../auth';
 import { selectToken } from '../selectors';
-import { tokenConfig } from '../headers/tokenConfig';
+import { tokenConfig } from '../../headers/tokenConfig';
 
 export const fillAuthUserAsync = createAction(
   'users/fillAuthUserAsync'

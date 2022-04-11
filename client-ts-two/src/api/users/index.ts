@@ -1,5 +1,5 @@
 import { axiosCreateBaseURLApi } from '../axiosCreateBaseURLApi';
-import { ConfigHeaders } from "../../store/auth/headers/ConfigHeaders";
+import { ConfigHeaders } from "../../store/headers/ConfigHeaders";
 import { DataFromServer } from '../../api/auth';
 
 export interface UserSignup {
