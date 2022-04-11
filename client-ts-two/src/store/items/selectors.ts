@@ -2,16 +2,8 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { RootState } from "..";
 
-export const getAuth = (state: RootState) => state.auth;
+export const getItems = (state: RootState) => state.items;
 
-export const selectAuth = createSelector(getAuth, auth => {
-  return auth;
+export const selectItems = createSelector(getItems, items => {
+  return items.items;
 });
-
-export const selectToken = createSelector(selectAuth, auth => {
-    return auth.token;
-});
-
-export const selectIsAuthenticated = createSelector(selectAuth, auth=>{
-  return auth.isAuthenticated
-})

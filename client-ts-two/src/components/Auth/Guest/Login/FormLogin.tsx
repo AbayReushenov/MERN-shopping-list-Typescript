@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { ITarget } from '../../../../types/interfaces';
+import { EventTarget } from '../../../../types/EventTarget';
 
 interface Props {
-  onChangeEmail: (e: ITarget) => void;
-  onChangePassword: (e: ITarget) => void;
+  onChangeEmail: (e: EventTarget) => void;
+  onChangePassword: (e: EventTarget) => void;
   onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

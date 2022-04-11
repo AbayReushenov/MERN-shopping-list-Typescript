@@ -1,4 +1,0 @@
-export enum Auth {
-  LOGIN_FAIL = 'LOGIN_FAIL',
-  REGISTER_FAIL = 'REGISTER_FAIL',
-}

@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions as actionsError } from '../../../../store/error/error';
 import { selectIsAuthenticated } from '../../../../store/auth/selectors';
 import { selectError } from '../../../../store/error/selectors';
-import { Auth } from '../../../../store/auth/message';
+import { E_ERROR } from '../../../../types/enum';
 
-export const useMsgModal = (errorMsg: Auth) => {
+export const useMsgModal = (errorMsg: E_ERROR) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const error = useSelector(selectError);

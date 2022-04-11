@@ -11,7 +11,7 @@ interface Payload {
   _id: string;
 }
 
-export const deleteItemAsync = createAction('items/deleteItem');
+export const deleteItemAsync = createAction<Payload>('items/deleteItem');
 
 function* deleteItemWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {

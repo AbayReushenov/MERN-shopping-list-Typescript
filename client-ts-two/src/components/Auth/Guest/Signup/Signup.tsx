@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, NavLink, Alert } from 'reactstrap';
 import { useDispatch } from 'react-redux';
-import { ITarget } from '../../../../types/interfaces';
+import { EventTarget } from '../../../../types/EventTarget';
 import { signupUserAsync } from '../../../../store/auth/signupUser';
 import { FormSignup } from './FormSignup';
-import { Auth } from '../../../../store/auth/message';
 import { useMsgModal } from '../hooks/useMsgModal';
+import { E_ERROR } from '../../../../types/enum';
 
 
 export const Signup: React.FC = () => {
-  const { msg, modal, handleToggle } = useMsgModal(Auth.REGISTER_FAIL);
+  const { msg, modal, handleToggle } = useMsgModal(E_ERROR.REGISTER_FAIL);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,9 +18,9 @@ export const Signup: React.FC = () => {
   const dispatch = useDispatch();
 
 
-  const handleChangeName = (e: ITarget) => setName(e.target.value);
-  const handleChangeEmail = (e: ITarget) => setEmail(e.target.value);
-  const handleChangePassword = (e: ITarget) => setPassword(e.target.value);
+  const handleChangeName = (e: EventTarget) => setName(e.target.value);
+  const handleChangeEmail = (e: EventTarget) => setEmail(e.target.value);
+  const handleChangePassword = (e: EventTarget) => setPassword(e.target.value);
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

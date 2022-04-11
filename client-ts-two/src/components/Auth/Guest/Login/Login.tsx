@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, NavLink, Alert } from 'reactstrap';
 
-import { ITarget } from '../../../../types/interfaces';
+import { EventTarget } from '../../../../types/EventTarget';
 import { loginUserAsync } from '../../../../store/auth/loginUser';
 import { FormLogin } from './FormLogin';
 import { useMsgModal } from '../hooks/useMsgModal';
-import { Auth } from '../../../../store/auth/message';
+import { E_ERROR } from '../../../../types/enum';
 
 export const Login: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { msg, modal, handleToggle } = useMsgModal(Auth.LOGIN_FAIL);
+  const { msg, modal, handleToggle } = useMsgModal(E_ERROR.LOGIN_FAIL);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChangeEmail = (e: ITarget) => setEmail(e.target.value);
-  const handleChangePassword = (e: ITarget) => setPassword(e.target.value);
+  const handleChangeEmail = (e: EventTarget) => setEmail(e.target.value);
+  const handleChangePassword = (e: EventTarget) => setPassword(e.target.value);
   const handleOnSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const user = { email, password };

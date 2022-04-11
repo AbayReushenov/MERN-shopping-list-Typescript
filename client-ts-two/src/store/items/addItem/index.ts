@@ -11,7 +11,7 @@ interface Payload {
   name: string;
 }
 
-export const addItemAsync = createAction('items/addItem');
+export const addItemAsync = createAction<Payload>('items/addItem');
 
 function* addItemWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {

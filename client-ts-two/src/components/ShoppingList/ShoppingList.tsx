@@ -1,41 +1,37 @@
 import React, { useEffect } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Container, ListGroup, ListGroupItem } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { connect } from 'react-redux';
-import { getItems, deleteItem } from '../flux/actions/itemActions';
-import { IItemReduxProps, IShoppingList } from '../types/interfaces';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const ShoppingList = ({
-  getItems,
-  item,
-  isAuthenticated,
-  deleteItem
-}: IShoppingList) => {
+import { selectIsAuthenticated } from '../../store/auth/selectors';
+import { getItemsAsync } from '../../store/items/getItems';
+import { selectItems } from '../../store/items/selectors';
+import { deleteItemAsync } from '../../store/items/deleteItem';
+import { DeleteItem } from './DeleteItem/DeleteItem';
+
+export const ShoppingList = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getItems();
-  }, [getItems]);
+    dispatch(getItemsAsync());
+  }, [dispatch]);
 
   const handleDelete = (id: string) => {
-    deleteItem(id);
+    dispatch(deleteItemAsync({ _id: id }));
   };
 
-  const { items } = item;
+  const items = useSelector(selectItems);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
   return (
     <Container>
       <ListGroup>
-        <TransitionGroup className="shopping-list">
+        <TransitionGroup className='shopping-list'>
           {items.map(({ _id, name }) => (
-            <CSSTransition key={_id} timeout={500} classNames="fade">
+            <CSSTransition key={_id} timeout={500} classNames='fade'>
               <ListGroupItem>
                 {isAuthenticated ? (
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    size="sm"
-                    onClick={() => handleDelete(_id)}
-                  >
-                    &times;
-                  </Button>
+                  <DeleteItem id={_id} onDelete={handleDelete} />
                 ) : null}
                 {name}
               </ListGroupItem>
@@ -46,12 +42,3 @@ export const ShoppingList = ({
     </Container>
   );
 };
-
-/* 
-const mapStateToProps = (state: IItemReduxProps) => ({
-  item: state.item,
-  isAuthenticated: state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);
- */

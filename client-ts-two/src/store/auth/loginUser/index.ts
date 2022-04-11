@@ -5,8 +5,8 @@ import { apply, put, takeLatest } from 'redux-saga/effects';
 import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
 import { actions as actionsAuth } from '../auth';
-import { Auth } from '../message';
 import { baseConfig } from '../../headers/baseConfig';
+import { E_ERROR } from '../../../types/enum';
 
 interface Payload {
   email: string;
@@ -27,7 +27,7 @@ function* loginUserWorker(action: PayloadAction<Payload>): SagaIterator<void> {
       actionsError.returnErrors({
         msg: error.response.data,
         status: error.response.status,
-        id: Auth.LOGIN_FAIL,
+        id: E_ERROR.LOGIN_FAIL,
       })
     );
     yield put(actionsAuth.reset());
