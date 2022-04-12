@@ -16,6 +16,7 @@ export const getUser: RequestHandler = async (req, res, next) => {
             email: user.email,
           },
         });
+        return;
       });
   }
   next();

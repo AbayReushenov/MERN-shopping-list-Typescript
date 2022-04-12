@@ -4,16 +4,18 @@ import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./rootSaga";
 import { rootReducer } from "./rootReducer";
 
-const createdSagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => {
-        return getDefaultMiddleware({ serializableCheck: false }).concat(createdSagaMiddleware);
-    },
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+            immutableCheck: false,
+            serializableCheck: false
+        }).concat(sagaMiddleware),
     devTools: process.env.NODE_ENV !== "production"
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 
-createdSagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);

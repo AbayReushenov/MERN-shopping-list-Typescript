@@ -25,7 +25,7 @@ export const AppNavbar: React.FC = () => {
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='ml-auto' navbar>
-              {auth && auth.isAuthenticated ? СonfirmedUser({auth}) : Guest}
+              {auth && auth.isAuthenticated ? СonfirmedUser({ auth }) : <Guest/>}
             </Nav>
           </Collapse>
         </Container>
@@ -33,4 +33,3 @@ export const AppNavbar: React.FC = () => {
     </div>
   );
 };
-
