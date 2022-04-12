@@ -1,6 +1,6 @@
 import { createAction, PayloadAction } from '@reduxjs/toolkit';
 import { SagaIterator } from 'redux-saga';
-import { apply, call, put, select, takeLatest } from 'redux-saga/effects';
+import { apply, put, select, takeLatest } from 'redux-saga/effects';
 
 import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
