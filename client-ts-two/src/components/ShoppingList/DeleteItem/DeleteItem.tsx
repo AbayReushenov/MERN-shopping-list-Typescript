@@ -9,6 +9,7 @@ interface Props {
 export const DeleteItem: React.FC<Props> = ({ id, onDelete }) => {
   return (
     <Button
+    key={id}
     className="remove-btn"
     color="danger"
     size="sm"
