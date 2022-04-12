@@ -19,11 +19,15 @@ export const items = {
     const { data } = await axiosCreateBaseURLApi.get<Item[]>('/data');
     return data;
   },
-  add: async (item: NewItem, configHeaders: ConfigHeaders): Promise<Item> => {
-    const { data } = await axiosCreateBaseURLApi.post<Item>('/data');
+  add: async (item: NewItem, tokenConfig: ConfigHeaders): Promise<Item> => {
+    const { data } = await axiosCreateBaseURLApi.post<Item>(
+      '/data',
+      item,
+      tokenConfig
+    );
     return data;
   },
-  delete: async (data: ItemId, configHeaders: ConfigHeaders): Promise<void> => {
-    await axiosCreateBaseURLApi.delete<Item>(`/data/${data._id}`);
+  delete: async (data: ItemId, tokenConfig: ConfigHeaders): Promise<void> => {
+    await axiosCreateBaseURLApi.delete<Item>(`/data/${data._id}`, tokenConfig);
   },
 };
