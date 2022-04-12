@@ -10,7 +10,7 @@ import { fillAuthUserAsync } from './store/auth/fillAuthUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-const App = () => {
+export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,5 +27,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
