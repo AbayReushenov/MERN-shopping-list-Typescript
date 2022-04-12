@@ -8,24 +8,22 @@ import { AddItem } from './AddItem/AddItem';
 import { FormForName } from './FormForName/FormForName';
 
 export const ItemModal = () => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
+  const dispatch = useDispatch();
 
   const handleToggle = () => setModal(!modal);
   const handleChangeName = (e: EventTarget) => setName(e.target.value);
 
-  const dispatch = useDispatch();
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(
-      addItemAsync({
-        name,
-      })
-    );
-    handleToggle();
+    const newName = {
+      name,
+    };
+    dispatch(addItemAsync(newName));
   };
 
-  const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <div>
       {isAuthenticated ? (
