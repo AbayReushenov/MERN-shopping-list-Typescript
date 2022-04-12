@@ -10,20 +10,21 @@ import { FormForName } from './FormForName/FormForName';
 export const ItemModal = () => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
-  
-  const handleToggle = () => setModal(!modal); 
+
+  const handleToggle = () => setModal(!modal);
   const handleChangeName = (e: EventTarget) => setName(e.target.value);
-  
+
   const dispatch = useDispatch();
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newItem = {
-      name,
-    };
-    dispatch(addItemAsync(newItem));
+    dispatch(
+      addItemAsync({
+        name,
+      })
+    );
     handleToggle();
   };
-  
+
   const isAuthenticated = useSelector(selectIsAuthenticated);
   return (
     <div>
@@ -36,10 +37,7 @@ export const ItemModal = () => {
       <Modal isOpen={modal} toggle={handleToggle}>
         <ModalHeader toggle={handleToggle}>Add To Shopping List</ModalHeader>
         <ModalBody>
-          <FormForName
-            onChange={handleChangeName}
-            onSubmit={handleOnSubmit}
-          />
+          <FormForName onChange={handleChangeName} onSubmit={handleOnSubmit} />
         </ModalBody>
       </Modal>
     </div>
