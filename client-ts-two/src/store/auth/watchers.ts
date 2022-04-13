@@ -2,13 +2,13 @@ import { SagaIterator } from 'redux-saga';
 import { all, call } from 'redux-saga/effects';
 
 import { watchLoadUser } from './loadUser';
-import { watchLoginUser } from './loginUser';
-import { watchSignupUser } from './signupUser';
+import { watchLogin } from './login';
+import { watchRegister } from './register';
 
 export function* watchAuth(): SagaIterator<void> {
   yield all([
     call(watchLoadUser),
-    call(watchLoginUser),
-    call(watchSignupUser),
+    call(watchLogin),
+    call(watchRegister),
   ]);
 }

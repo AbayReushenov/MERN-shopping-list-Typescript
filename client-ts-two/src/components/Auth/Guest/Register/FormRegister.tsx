@@ -9,7 +9,7 @@ interface Props {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const FormSignup: React.FC<Props> = ({
+export const FormRegister: React.FC<Props> = ({
   onChangeName,
   onChangeEmail,
   onChangePassword,
@@ -18,12 +18,12 @@ export const FormSignup: React.FC<Props> = ({
   return (
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label for='name'>Name</Label>
+        <Label for='name'>Имя</Label>
         <Input
           type='text'
           name='name'
           id='name'
-          placeholder='Name'
+          placeholder='Имя'
           className='mb-3'
           onChange={onChangeName}
         />
@@ -38,17 +38,17 @@ export const FormSignup: React.FC<Props> = ({
           onChange={onChangeEmail}
         />
 
-        <Label for='password'>Password</Label>
+        <Label for='password'>Пароль</Label>
         <Input
           type='password'
           name='password'
           id='password'
-          placeholder='Password'
+          placeholder='Пароль'
           className='mb-3'
           onChange={onChangePassword}
         />
         <Button color='dark' style={{ marginTop: '2rem' }} block>
-          Register
+          Зарегистрироваться
         </Button>
       </FormGroup>
     </Form>

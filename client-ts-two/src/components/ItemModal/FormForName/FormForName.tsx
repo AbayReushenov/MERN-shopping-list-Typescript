@@ -11,16 +11,16 @@ export const FormForName: React.FC<Props> = ({ onChange, onSubmit }) => {
   return (
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label for='item'>Item</Label>
+        <Label for='item'>Что добавить?</Label>
         <Input
           type='text'
           name='name'
           id='item'
-          placeholder='Add shopping item'
+          placeholder='Написать здесь'
           onChange={onChange}
         />
         <Button color='dark' style={{ marginTop: '2rem' }} block>
-          Add Item
+          Подтвердить
         </Button>
       </FormGroup>
     </Form>

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, NavLink, Alert } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { EventTarget } from '../../../../types/EventTarget';
-import { signupUserAsync } from '../../../../store/auth/signupUser';
-import { FormSignup } from './FormSignup';
+import { register } from '../../../../store/auth/register';
+import { FormRegister } from './FormRegister';
 import { useMsgModal } from '../hooks/useMsgModal';
 import { E_ERROR } from '../../../../types/enum';
 
-
-export const Signup: React.FC = () => {
+export const Register: React.FC = () => {
   const { msg, modal, handleToggle } = useMsgModal(E_ERROR.REGISTER_FAIL);
 
   const [name, setName] = useState('');
@@ -16,7 +15,6 @@ export const Signup: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-
 
   const handleChangeName = (e: EventTarget) => setName(e.target.value);
   const handleChangeEmail = (e: EventTarget) => setEmail(e.target.value);
@@ -29,26 +27,26 @@ export const Signup: React.FC = () => {
       email,
       password,
     };
-    dispatch(signupUserAsync(user));
+    dispatch(register(user));
   };
 
   return (
     <div>
       <NavLink onClick={handleToggle} href='#'>
-        Register
+        Регистрация
       </NavLink>
 
       <Modal isOpen={modal} toggle={handleToggle}>
-        <ModalHeader toggle={handleToggle}>Register</ModalHeader>
+        <ModalHeader toggle={handleToggle}>Регистрация</ModalHeader>
         <ModalBody>
           {msg ? <Alert color='danger'>{msg}</Alert> : null}
-          <FormSignup
+          <FormRegister
             onChangeName={handleChangeName}
             onChangeEmail={handleChangeEmail}
             onChangePassword={handleChangePassword}
             onSubmit={handleOnSubmit}
           />
-        </ModalBody>        
+        </ModalBody>
       </Modal>
     </div>
   );

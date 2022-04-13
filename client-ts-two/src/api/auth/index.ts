@@ -7,7 +7,7 @@ export interface User {
   email: string;
 }
 
-export interface UserSignin {
+export interface UserLogin {
   email: string;
   password: string;
 }
@@ -18,16 +18,16 @@ export interface DataFromServer {
 }
 
 export const auth = {
-  get: async (tokenConfig: ConfigHeaders): Promise<User> => {
+  loadUser: async (tokenConfig: ConfigHeaders): Promise<User> => {
     const { data } =
       await axiosCreateBaseURLApi.get<User>(
-        '/auth',
+        '/auth/user',
         tokenConfig
       );
     return data;
   },
-  signin: async (
-    user: UserSignin,
+  login: async (
+    user: UserLogin,
     configHeaders: ConfigHeaders
   ): Promise<DataFromServer> => {
     const { data } = await axiosCreateBaseURLApi.post<DataFromServer>(

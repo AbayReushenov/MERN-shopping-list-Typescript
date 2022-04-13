@@ -13,8 +13,8 @@ export const loadUser = createAction('auth/loadUser');
 function* loadUserWorker(): SagaIterator<void> {
   try {
     const token = yield select(selectToken);
-    const user = yield apply(api, api.auth.get, [tokenConfig(token)]);
-    yield put(actionsAuth.fillAuthUser(user));
+    const user = yield apply(api, api.auth.loadUser, [tokenConfig(token)]);
+    yield put(actionsAuth.loadUser(user));
   } catch (error: any) {
     yield put(
       actionsError.returnErrors({

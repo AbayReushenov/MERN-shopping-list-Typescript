@@ -26,7 +26,7 @@ export const FormLogin: React.FC<Props> = ({
           onChange={onChangeEmail}
         />
 
-        <Label for='password'>Password</Label>
+        <Label for='password'>Пароль</Label>
         <Input
           type='password'
           name='password'
@@ -41,7 +41,7 @@ export const FormLogin: React.FC<Props> = ({
           block
           onClick={onSubmit}
         >
-          Login
+          Войти
         </Button>
       </FormGroup>
     </Form>

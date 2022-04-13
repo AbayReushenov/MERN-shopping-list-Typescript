@@ -12,7 +12,7 @@ export const AddItem: React.FC<Props> = ({ onClick }) => {
       style={{ marginBottom: '2rem' }}
       onClick={onClick}
     >
-      Add Item
+      Добавить пункт
     </Button>
   );
 };

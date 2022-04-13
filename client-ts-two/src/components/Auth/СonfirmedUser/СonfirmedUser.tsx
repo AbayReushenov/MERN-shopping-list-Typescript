@@ -7,14 +7,13 @@ interface Props {
   auth: AuthState;
 }
 
-export const СonfirmedUser: React.FC<Props> = (props) => {
-  const { auth } = props;
+export const СonfirmedUser: React.FC<Props> = ({auth}) => {
   return (
     <Fragment>
       <NavItem>
         <span className='navbar-text mr-3'>
           <strong>
-            {auth && auth.user ? `Welcome ${auth.user.name}` : ''}
+            {auth && auth.user ? `Добро пожаловать ${auth.user.name}` : ''}
           </strong>
         </span>
       </NavItem>

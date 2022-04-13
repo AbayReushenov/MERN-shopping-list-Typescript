@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, NavLink, Alert } from 'reactstrap';
 
 import { EventTarget } from '../../../../types/EventTarget';
-import { loginUserAsync } from '../../../../store/auth/loginUser';
+import { login } from '../../../../store/auth/login';
 import { FormLogin } from './FormLogin';
 import { useMsgModal } from '../hooks/useMsgModal';
 import { E_ERROR } from '../../../../types/enum';
@@ -20,17 +20,17 @@ export const Login: React.FC = () => {
   const handleOnSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const user = { email, password };
-    dispatch(loginUserAsync(user));
+    dispatch(login(user));
   };
 
   return (
     <div>
       <NavLink onClick={handleToggle} href='#'>
-        Login
+        Войти
       </NavLink>
 
       <Modal isOpen={modal} toggle={handleToggle}>
-        <ModalHeader toggle={handleToggle}>Login</ModalHeader>
+        <ModalHeader toggle={handleToggle}>Войти с паролем</ModalHeader>
         <ModalBody>
           {msg ? <Alert color='danger'>{msg}</Alert> : null}
           <FormLogin

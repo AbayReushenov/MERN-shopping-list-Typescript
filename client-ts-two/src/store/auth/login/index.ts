@@ -4,37 +4,36 @@ import { apply, put, takeLatest } from 'redux-saga/effects';
 
 import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
-import { actions as actionsAuth } from '../authSlice';
+import { actions } from '../authSlice';
 import { baseConfig } from '../../headers/baseConfig';
 import { E_ERROR } from '../../../types/enum';
 
 interface Payload {
-  name: string;
   email: string;
   password: string;
 }
 
-export const signupUserAsync = createAction<Payload>('users/signupUserAsync');
+export const login = createAction<Payload>('auth/login');
 
-function* signupUserWorker(action: PayloadAction<Payload>): SagaIterator<void> {
+function* loginWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {
-    const data = yield apply(api, api.users.signup, [
+    const data = yield apply(api, api.auth.login, [
       action.payload,
       baseConfig,
     ]);
-    yield put(actionsAuth.fillUser(data));
+    yield put(actions.fillUser(data));
   } catch (error: any) {
     yield put(
       actionsError.returnErrors({
         msg: error.response.data,
         status: error.response.status,
-        id: E_ERROR.REGISTER_FAIL,
+        id: E_ERROR.LOGIN_FAIL,
       })
     );
-    yield put(actionsAuth.reset());
+    yield put(actions.reset());
   }
 }
 
-export function* watchSignupUser(): SagaIterator<void> {
-  yield takeLatest(signupUserAsync.type, signupUserWorker);
+export function* watchLogin(): SagaIterator<void> {
+  yield takeLatest(login.type, loginWorker);
 }

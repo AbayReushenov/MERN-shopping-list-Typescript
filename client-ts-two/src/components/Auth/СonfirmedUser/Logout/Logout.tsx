@@ -8,7 +8,7 @@ export const Logout = () => {
   return (
     <Fragment>
       <NavLink onClick={() => dispatch(actionsAuth.reset())} href='/'>
-        Logout
+        Выйти
       </NavLink>
     </Fragment>
   );

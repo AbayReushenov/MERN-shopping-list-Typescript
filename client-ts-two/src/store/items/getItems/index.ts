@@ -6,7 +6,7 @@ import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
 import { actions as actionsItems } from '../items';
 
-export const getItemsAsync = createAction('items/getItems');
+export const getItemsAsync = createAction('items/getItemsAsync');
 
 function* getItemsWorker(): SagaIterator<void> {
   try {

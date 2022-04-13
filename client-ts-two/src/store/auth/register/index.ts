@@ -9,15 +9,16 @@ import { baseConfig } from '../../headers/baseConfig';
 import { E_ERROR } from '../../../types/enum';
 
 interface Payload {
+  name: string;
   email: string;
   password: string;
 }
 
-export const loginUserAsync = createAction<Payload>('users/loginUserAsync');
+export const register = createAction<Payload>('users/register');
 
-function* loginUserWorker(action: PayloadAction<Payload>): SagaIterator<void> {
+function* registerWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {
-    const data = yield apply(api, api.auth.signin, [
+    const data = yield apply(api, api.users.signup, [
       action.payload,
       baseConfig,
     ]);
@@ -27,13 +28,13 @@ function* loginUserWorker(action: PayloadAction<Payload>): SagaIterator<void> {
       actionsError.returnErrors({
         msg: error.response.data,
         status: error.response.status,
-        id: E_ERROR.LOGIN_FAIL,
+        id: E_ERROR.REGISTER_FAIL,
       })
     );
     yield put(actionsAuth.reset());
   }
 }
 
-export function* watchLoginUser(): SagaIterator<void> {
-  yield takeLatest(loginUserAsync.type, loginUserWorker);
+export function* watchRegister(): SagaIterator<void> {
+  yield takeLatest(register.type, registerWorker);
 }

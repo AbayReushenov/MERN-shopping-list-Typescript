@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { NavItem } from 'reactstrap';
 
-import { Signup } from './Signup/Signup';
+import { Register } from './Register/Register';
 import { Login } from './Login/Login';
 
 export const Guest: React.FC = () => {
   return (
     <Fragment>
       <NavItem>
-        <Signup />
+        <Register />
       </NavItem>
       <NavItem>
         <Login />
