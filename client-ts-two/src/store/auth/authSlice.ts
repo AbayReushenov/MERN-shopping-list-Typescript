@@ -22,7 +22,7 @@ const resetState: AuthState = {
   user: null,
 };
 
-const auth = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -45,4 +45,4 @@ const auth = createSlice({
   },
 });
 
-export const { actions, reducer } = auth;
+export const { actions, reducer } = authSlice;

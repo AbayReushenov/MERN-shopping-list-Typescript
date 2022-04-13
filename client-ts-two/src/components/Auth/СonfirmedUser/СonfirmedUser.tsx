@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { NavItem } from 'reactstrap';
-import { AuthState } from '../../../store/auth/auth';
+import { AuthState } from '../../../store/auth/authSlice';
 import { Logout } from './Logout/Logout';
 
 interface Props {

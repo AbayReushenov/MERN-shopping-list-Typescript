@@ -4,7 +4,7 @@ import { apply, put, takeLatest } from 'redux-saga/effects';
 
 import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
-import { actions as actionsAuth } from '../auth';
+import { actions as actionsAuth } from '../authSlice';
 import { baseConfig } from '../../headers/baseConfig';
 import { E_ERROR } from '../../../types/enum';
 

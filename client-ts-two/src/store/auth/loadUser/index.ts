@@ -4,15 +4,13 @@ import { apply, put, select, takeLatest } from 'redux-saga/effects';
 
 import { api } from '../../../api';
 import { actions as actionsError } from '../../error/error';
-import { actions as actionsAuth } from '../auth';
+import { actions as actionsAuth } from '../authSlice';
 import { selectToken } from '../selectors';
 import { tokenConfig } from '../../headers/tokenConfig';
 
-export const fillAuthUserAsync = createAction(
-  'users/fillAuthUserAsync'
-);
+export const loadUser = createAction('auth/loadUser');
 
-function* fillAuthUserWorker(): SagaIterator<void> {
+function* loadUserWorker(): SagaIterator<void> {
   try {
     const token = yield select(selectToken);
     const user = yield apply(api, api.auth.get, [tokenConfig(token)]);
@@ -29,9 +27,6 @@ function* fillAuthUserWorker(): SagaIterator<void> {
   }
 }
 
-export function* watchFillAuthUser(): SagaIterator<void> {
-  yield takeLatest(
-    fillAuthUserAsync.type,
-    fillAuthUserWorker
-  );
+export function* watchLoadUser(): SagaIterator<void> {
+  yield takeLatest(loadUser.type, loadUserWorker);
 }
