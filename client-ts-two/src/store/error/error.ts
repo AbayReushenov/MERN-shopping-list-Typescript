@@ -21,11 +21,11 @@ const error = createSlice({
   initialState,
   reducers: {
     returnErrors: (state, action: PayloadAction<ErrorState>) => {
-      state = {
+      Object.assign(state, {
         msg: action.payload.msg,
         status: action.payload.status,
         id: action.payload.id,
-      };
+      });
     },
     clearErrors: (state) => {
       state = initialState;
