@@ -22,6 +22,7 @@ export const ItemModal = () => {
       name,
     };
     dispatch(addItemAsync(newName));
+    handleToggle();
   };
 
   return (
@@ -29,7 +30,9 @@ export const ItemModal = () => {
       {isAuthenticated ? (
         <AddItem onClick={handleToggle} />
       ) : (
-        <h4 className='mb-3 ml-4'>Привет Гость! Можно добавить и удалить, но только после регистрации</h4>
+        <h4 className='mb-3 ml-4'>
+          Привет Гость! Можно добавить и удалить, но только после регистрации
+        </h4>
       )}
 
       <Modal isOpen={modal} toggle={handleToggle}>
