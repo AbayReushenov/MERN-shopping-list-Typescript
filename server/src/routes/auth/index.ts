@@ -5,12 +5,6 @@ import { authentication } from '../../middleware/auth';
 
 export const routerAuth = Router()
 
-/**
- * @route  GET api/auth
- * @desc   Get user data
- * @access Privat
- **/ 
-routerAuth.get("/", authentication,  getUser)
 
 /**
  * @route  POST api/auth
@@ -21,5 +15,11 @@ routerAuth.get("/", authentication,  getUser)
 routerAuth.post('/', authUser)
 
 
+/**
+ * @route  GET api/auth
+ * @desc   Get user data
+ * @access Privat
+ **/ 
+routerAuth.get("/user", authentication,  getUser)
 
 
