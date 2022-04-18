@@ -1,10 +1,14 @@
 import { axiosCreateBaseURLApi } from '../axiosCreateBaseURLApi';
-import { ConfigHeaders } from "../../store/headers/ConfigHeaders";
+import { ConfigHeaders } from '../../store/headers/ConfigHeaders';
 
 export interface User {
   id: string;
   name: string;
   email: string;
+}
+
+export interface UserServer {
+  user: User;
 }
 
 export interface UserLogin {
@@ -13,17 +17,16 @@ export interface UserLogin {
 }
 
 export interface DataFromServer {
-  user: User
-  token: string
+  user: User;
+  token: string;
 }
 
 export const auth = {
-  loadUser: async (tokenConfig: ConfigHeaders): Promise<User> => {
-    const { data } =
-      await axiosCreateBaseURLApi.get<User>(
-        '/auth/user',
-        tokenConfig
-      );
+  loadUser: async (tokenConfig: ConfigHeaders): Promise<UserServer> => {
+    const { data } = await axiosCreateBaseURLApi.get<UserServer>(
+      '/auth/user',
+      tokenConfig
+    );
     return data;
   },
   login: async (

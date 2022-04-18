@@ -8,13 +8,13 @@ import { actions as actionsAuth } from '../authSlice';
 import { selectToken } from '../selectors';
 import { tokenConfig } from '../../headers/tokenConfig';
 
-export const loadUser = createAction('auth/loadUser');
+export const loadUser = createAction('loadUser');
 
 function* loadUserWorker(): SagaIterator<void> {
   try {
     const token = yield select(selectToken);
-    const user = yield apply(api, api.auth.loadUser, [tokenConfig(token)]);
-    yield put(actionsAuth.loadUser(user));
+    const data = yield apply(api, api.auth.loadUser, [tokenConfig(token)]);
+    yield put(actionsAuth.loadUser(data.user));
   } catch (error: any) {
     yield put(
       actionsError.returnErrors({

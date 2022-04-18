@@ -14,7 +14,7 @@ interface Payload {
   password: string;
 }
 
-export const register = createAction<Payload>('users/register');
+export const register = createAction<Payload>('register');
 
 function* registerWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {

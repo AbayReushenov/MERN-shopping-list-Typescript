@@ -12,7 +12,7 @@ interface Payload {
   name: string;
 }
 
-export const addItemAsync = createAction<Payload>('items/addItemAsync');
+export const addItemAsync = createAction<Payload>('addItemAsync');
 
 function* addItemWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   const token = yield select(selectToken);

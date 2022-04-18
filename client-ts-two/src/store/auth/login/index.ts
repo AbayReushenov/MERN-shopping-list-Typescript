@@ -13,7 +13,7 @@ interface Payload {
   password: string;
 }
 
-export const login = createAction<Payload>('auth/login');
+export const login = createAction<Payload>('login');
 
 function* loginWorker(action: PayloadAction<Payload>): SagaIterator<void> {
   try {
