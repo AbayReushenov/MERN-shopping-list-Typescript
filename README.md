@@ -1,4 +1,4 @@
-### Код  https://github.com/AbayReushenov/MERN-shopping-list перписан на TypeScript
+### Код  https://github.com/AbayReushenov/MERN-shopping-list переписан на TypeScript
 
 
 # api
