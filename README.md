@@ -1,3 +1,6 @@
+### Код  https://github.com/AbayReushenov/MERN-shopping-list перписан на TypeScript
+
+
 # api
 API tutorial
 ### Здесь main - главная ветка
